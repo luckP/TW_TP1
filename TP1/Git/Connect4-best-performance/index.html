@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8"/>
+    <title>Connect4</title>
+    <script src="node.js"></script>
+    <script src="ai.js"></script>
+    <script src="field.js"></script>
+    <script src="menu.js"></script>
+    <link rel="stylesheet" type="text/css" href="field.css">
+    <link rel="stylesheet" type="text/css" href="menu.css">
+    <link rel="stylesheet" type="text/css" href="mobile.css" media="screen and (min-width: 200px) and (max-width: 400px)"/>
+</head>
+
+<body>
+<!--
+    <div id="login-card">
+        <div class="menu-frame">
+            <div class="menu-title">Login</div>
+            <form id="fieldSize">
+                <table style="margin: auto">
+                    <tr><td style="color: black">#Row: </td><td><input id="row" type="number" name="row" min="4" value="6"></td></tr>
+                    <tr><td style="color: black">#Col: </td><td><input id="col" type="number" name="col" min="4" value="7"></td></tr>
+                </table>
+            </form>
+            <div id="btn1" class="g-button" onclick="initField()">Play</div>
+        </div>
+    </div>
+-->
+    
+    <div id="menu-card" class="card">
+        <div class="menu-frame">
+            <div class="menu-title">Connect4</div>
+            <div class="g-button" onclick="flipCard('config-card')">New Game</div>
+            <div id="btn2" class="g-button g-button-tutorial" onmouseleave="topFunction()">Tutorial <h4>4 em linha:</h4>
+<p style="font-size: 0.5em">O quatro em linha joga-se numa grelha (geralmente 7 x 6) colocada na vertical. As peças colocadas numa das aberturas no topo da grelha caiem ao longo de calhas e ocupam a primeira posição livre, seja no fundo da grelha ou sobre outra peça. Cada jogador joga com peças de cor diferente e alternadamente coloca uma peça numa das calhas ainda não completamente preenchidas. Ganha o primeiro jogador que conseguir colocar 4 peças da sua cor alinhadas, na vertical, horizontal ou diagonal.</p></div>
+            <div class="g-button">Btn3</div>
+        </div>
+    </div>
+
+    <div id="config-card" class="card">
+        <div class="menu-frame">
+            <div class="menu-title">Connect4</div>
+                <div id="field-size">
+                <input id="row" placeholder="Row" value="6"><br>
+                <input id="col" placeholder="Column" value="7"><br>
+                <input id="vsBot" name="vsB" type="radio">vsBot<br>
+                <input name="vsB" type="radio" value="VsHuman" checked>vsHuman<br>
+                <input id="first" name="fi" type="radio" checked>Play First<br>
+                <input name="fi" type="radio">Play Second
+                </div>
+            
+            <div id="playbtn" class="g-button" onclick="fakeStart()">Play</div>
+        </div>
+    </div>
+
+    <div id="game-card" class="card">
+        <div id="game-title">
+                Player1: <div class="player-color" style="background-color: #18BC9C"></div>
+                Computer: <div class="player-color" style="background-color: #2C3E50"></div>
+        </div>
+        <div id="game-container">
+            <div id="field">
+            </div>
+            <div class="g-button" onclick="flipCard('pop-up-card')">Surrender</div>
+        </div>
+    </div>
+
+    <div id="pop-up-card" class="card">
+        <div class="menu-frame game-pop-up">
+            <div class="menu-title">Game Over</div>
+            <div id="end-game" class="menu-title"></div>
+            <div class="g-button pop-up-btn" onclick="initField()">Play Again</div>
+            <div class="g-button pop-up-btn" onclick="flipCard('menu-card')">Back to Menu</div>
+        </div>
+    </div>
+
+</body>
+</html>

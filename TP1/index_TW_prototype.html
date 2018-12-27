@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+
+		*{
+			margin: 0;
+		}
+
+		*:focus {
+		    outline: 0 !important;
+		}
+
+		input, button, submit{
+		  border:none;
+		}
+		nav{
+			position: absolute;
+			top: 0;
+			z-index: 10;
+			width: 100%;
+		}
+
+		nav li {
+		    list-style: none;
+		    float: left;
+		    margin: 0 0 0 15px;
+		}
+
+		nav li a {
+		    text-decoration: none;
+		    font-family: fantasy;
+		    color: #673AB7;
+		    transition: .5s;
+			}
+		nav li a:hover{
+			color: red;
+		}
+
+		button.slide_button {
+		    border: none;
+		    border-radius: 100%;
+		    width: 10px;
+		    height: 13px;
+		    margin: 2px;
+		}
+
+		.login_nav{
+			float: right;
+			margin-right: 15px;
+		}
+		#slides{
+			height: 100%;
+			overflow: hidden;
+			transition: .5s;
+
+		}
+
+		.slide{
+			width: 100vw;
+			height: 100%;
+			float: left;
+		}
+
+		#slides_buttons{
+			/*width: 100px;*/
+			height: 20px;
+			position: absolute;
+			bottom: 30px;
+			/*display: inline;*/
+
+		}
+
+		.disc{
+		    background-color: gray;
+		    width: calc(14.3vh - 15px);
+		    height: calc(14.3vh - 15px);
+		    float: left;
+		    border-radius: 100%;
+		    margin: 5px;
+		}
+
+		#main{
+			width: 100%;
+			height: 100vh;
+			overflow: hidden;
+
+		}
+
+		#grid{
+			width: 100vh;
+		}
+
+		.text{
+			font-size: 100px;
+			margin-top: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		var grid_num_line    = 6;
+		var grid_num_columns = 7;
+		var players = [{'id':'1', 'name':'p1', 'color_disk': 'red'}, {'id':'2', 'name':'p2', 'color_disk': 'blue'}];
+		var turn = true;
+		var grid = [];
+		var slides = [];
+
+		function checkEndGame(lin, col){
+			var num_p1 = 0;
+			var num_p2 = 0;
+			for(var i=0; i<grid_num_line; i++){
+				if(grid[i][col] == players[0].id){
+					num_p1++;
+					num_p2=0;
+				}
+				else if(grid[i][col] == players[1].id){
+					num_p1=0;
+					num_p2++;
+				}
+				else{
+					num_p1=0;
+					num_p2=0;
+				}
+				if(num_p1==4){
+					console.log("jogador 1");
+				}
+				if(num_p2==4){
+					console.log("jogador 2");
+				}
+			}
+
+			num_p1 = 0;
+			num_p2 = 0;
+
+			for(var j=0; j<grid_num_columns; j++){
+				if(grid[lin][j] == players[0].id){
+					num_p1++;
+					num_p2=0;
+				}
+				else if(grid[lin][j] == players[1].id){
+					num_p1=0;
+					num_p2++;
+				}
+				else{
+					num_p1=0;
+					num_p2=0;
+				}
+				if(num_p1==4){
+					console.log("jogador 1");
+				}
+				if(num_p2==4){
+					console.log("jogador 2");
+				}
+			}
+
+			// var min = Math.min(grid_num_line-1-lin, col);
+
+		}
+
+		function playColum(col){
+			var flag = false;
+			var player = (turn? players[0]:players[1]);
+			for(var i=grid_num_line-1; i>=0; i--){
+				if(grid[i][col] == 0){
+					grid[i][col] = player.id;
+					flag = true;
+					document.getElementById('disc'+i.toString()+col.toString()).style.backgroundColor=player.color_disk;
+					checkEndGame(i, col);
+					break;
+				}
+			}
+			if(!flag)
+				console.log('erro');
+			else
+				turn = !turn;
+		}
+
+		// slides
+		class Slide{
+			constructor(div){
+				this.div = div;
+			}
+
+			animation(){
+				var a = this.div.querySelectorAll("p");
+				for(var i=0; i<a.length; i++){
+					a[i].style.opacity = '0';
+					a[i].style.marginTop+=100;
+					a[i].style.transition='.5s';
+					a[i].style.marginTop='100px';
+					console.log(a[i].style);
+				}
+
+				setTimeout(function(){
+					for(var i=0; i<a.length; i++){
+						a[i].style.color = 'blue';
+						a[i].style.opacity = '1';
+						a[i].style.marginTop='10px';
+						a[i].style.transition='0';
+					}
+				}, 500);
+				
+			}
+		}
+
+
+		function slideClick(s){
+			// console.log(teste);
+			slides[s].animation();
+			document.getElementById('slides').style.transform='translate(-'+100*s+'vw)';
+		}
+
+		function createSlide(){
+			var num = document.getElementsByClassName('slide').length;
+			document.getElementById('slides').style.width=100*num+'%';
+
+			var str = '';
+			for(var i=0; i<num; i++){
+				// CREATE BUTTON
+				slides[i] = new Slide(document.getElementsByClassName('slide')[i]);
+				str+='<button class="slide_button" onclick="slideClick('+i+')"></button>'
+			}
+
+			document.getElementById('slides_buttons').innerHTML = str;
+			document.getElementById('slides_buttons').style.marginLeft='calc(50% - '+document.getElementById('slides_buttons').clientWidth/2+'px)';
+		}
+
+		//ONLOAD 
+		window.onload  = function(e){ 
+			var str = '';
+			for(var i=0; i<grid_num_line; i++){
+				grid[i] = [];
+				str+='<tr>';
+				for(var j=0; j<grid_num_columns; j++){
+					grid[i][j]=0;
+					str+='<td id="'+ 'disc'+i.toString()+j.toString() +'" class="disc" onClick="'+"playColum("+j+")"+'">';
+					str+='</td>';
+				}
+				str+='</tr>';
+			}
+			document.getElementById('grid').innerHTML = str;
+			createSlide();
+		}
+		
+
+	</script>
+</head>
+<body>
+	<div id="main">
+		<nav>
+			<div id="nav_logo">NOME DO SISTEMA</div>
+			<ul>
+				<li><a href="">HOME</a></li>
+				<li><a href="">GAMES</a></li>
+				<li><a href="">BLOG</a></li>
+				<li><a href="">CONTACTOS</a></li>
+				<li class="login_nav"><a href="">LOGON</a></li>
+				<li class="login_nav"><a href="">LOGIN</a></li>
+			</ul>
+		</nav>
+		
+		<div id="slides">
+			<div class="slide" style="background-color:orange"><p class="text">s1</p></div>	 
+			<div class="slide" style="background-color: green"><p class="text">s2</p></div>
+			<div class="slide" style="background-color: red"><p class="text">s3</p></div>
+
+		</div>
+		<div id="slides_buttons"></div>	 
+	</div>
+	<table id="grid">
+	</table>
+
+</body>
+</html>

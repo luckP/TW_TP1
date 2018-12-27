@@ -1,0 +1,88 @@
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+/*    background: #18BC9C;*/
+    background: #2C3E50;
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    visibility: hidden;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #18BC9C;
+    visibility: visible;
+/*    background: #2C3E50;*/
+}
+
+
+#menu-frame {
+    width: 500px;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+    border: solid grey 5px;
+    border-radius: 10%;
+    padding-bottom: 30px;
+}
+
+.menu-title {
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 4px;
+}
+
+.g-button {
+    cursor: pointer; 
+    user-select: none;
+    font-family: monospace;
+    line-height: 100px;
+/*    font-size: 25px;*/
+    width: 400px;
+    height: 100px;
+    border: solid black 3px;
+    border-radius: 10%;
+    background-color: darkgrey;
+    margin: auto;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 50px;
+}
+
+.g-button-tutorial {
+    transition: .5s;
+    overflow: hidden;
+    cursor: default;
+}
+
+.g-button-tutorial p, h4 {
+    line-height: normal;
+    text-align: justify;
+    margin: 15px;
+    font-size: 25px;
+}
+
+
+.g-button-tutorial:hover {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.g-button:hover {
+    background-color: grey;
+}

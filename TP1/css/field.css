@@ -1,0 +1,76 @@
+@keyframes winner{
+    50% { border-color: #FFFF00; }
+}
+
+tr, td, table {
+    color: white;
+    /*background-color: white;*/
+    text-align: center;
+    border: solid 2px black;
+}
+
+.column:hover {
+    opacity: 0.5;
+}
+
+.player-color {
+    width: 20px;
+    height: 20px;
+    border: solid 2px black;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+#game-title {
+    text-align: center;
+    /*background-color: white;*/
+    /*color: white;*/
+    font-size: xx-large;
+    width: 500px;
+    margin: auto;
+}
+
+.cell {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+    border: solid 2px black;
+    transition: background-color .4s, opacity 2s;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+.column {
+    flex-direction: column;
+    float: left;
+}
+
+#game-container {
+    margin: auto;
+    width: 700px;
+}
+
+#field {
+    border-radius: 5%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    background-color: gray;
+    /*height: 514px;*/
+    width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+#game-card {
+    display: none;
+}
+
+#config-card {
+    display: none;
+}
+
+#menu-card {
+    display: none;
+}

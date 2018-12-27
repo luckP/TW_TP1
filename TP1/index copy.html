@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- palet https://flatuicolors.com/palette/defo -->
+    <!-- https://loading.io/spinner/custom/188457 -->
+
+	<title>TW</title>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <script src="luc.js"></script>
+    <style>
+        *{
+            margin:0;
+            font-family: 'Patrick Hand', cursive;   
+
+        }
+        button:focus { outline: none; }
+
+        /*------------------------------------NAV-------------------------------------*/
+
+
+        nav{
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+        }
+
+        nav ul{
+            list-style: none;
+            display: flex;
+            float: left;
+
+        }
+        
+        nav .login{
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav li{
+            float: left;
+            margin: 10px;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        nav li a{
+            text-decoration: none;
+            color: #34495e;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .nav-line{
+            position: relative;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: #34495e;
+            border-radius: 3px;
+            opacity: 0;
+        }
+
+        /*------------------------------------SLIDE-------------------------------------*/
+
+        .luc-slide-button-on-off{
+            background-size: 75%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent!important;
+            border: 1px solid gray!important;
+            transition: .5s;
+        }
+
+        .luc-slide-button-on{
+
+            background-image: url('img/pause.png');
+            border: 1px solid #7f8c8d!important;
+
+        }
+
+        .luc-slide-button-off{
+            background-image: url('img/play.png');
+            border: 1px solid #2ecc71!important;
+        }
+
+        .luc-slide-arrow-button{
+            background-size: contain;
+            height: 65px!important;
+            background-position: center;
+            background-repeat: no-repeat;
+            top: calc(50% - 33px)!important;
+            background-color: transparent!important;
+            background-image: url(img/arrow_right.png);
+
+        }
+
+        .luc-slide-arrow-right-button{
+            background-image: url(img/arrow_right.png);
+        }
+
+        .luc-slide-arrow-left-button{
+            background-image: url(img/arrow_left.png);
+        }
+
+        container .luc-slide-button-off{
+            background-color: transparent;
+            /*border: none!important;*/
+        }
+
+        container .luc-slide-button-on{
+            background-color: #34495e;
+            border: none!important;
+
+        }
+
+        container .luc-slide-button{
+            /*background-color: transparent;*/
+        }
+
+        .slide1{
+            text-align: center;
+        }
+
+        .slide-button{
+            color: #bdc3c7;
+            bottom: 25%;
+            left: 40%;
+            background-color: white;
+            border: none;
+            /*border: 2px solid #bdc3c7;*/
+            border-radius: 15px;
+            padding: 10px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.4em;
+            /* line-height: 100%; */
+            width: 20%;
+            /*text-align: center;*/
+
+        }
+
+        .slide1 p{
+            bottom: 30%;
+            font-family: 'Patrick Hand', cursive;
+            text-align: center;
+            font-size: 1.1em;
+            padding: 10%;
+            color: #7f8c8d;
+            margin-top: 35vh;
+        }
+
+        /*------------------------------------FORM-------------------------------------*/
+        
+        .register-email{
+            width: 100%;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            background-image: url('img/abstract-background-blur-255379.png');
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 20px 1px 40px 3px;
+        }
+
+        .register-email span{
+            font-size: 2.3em;
+            margin: 20px 10%;
+        }
+
+        .register-email .register-email-container{
+            width: 80%;
+            margin: 20px 10%;
+            height: 40px;
+        }
+
+        .register-email  input[type="email"] {
+            border: none;
+            width: calc(100% - 80px);
+            height: 40px;
+            border-radius: 3px 0 0 3px;
+            /* background-color: #2c3e50; */
+            padding: 10px;
+            font-size: 1.6em;
+            float: left;
+        }
+
+        .register-email input[type="submit"] {
+            border: none;
+            float: right;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            border-left: solid 1px #949494;
+            color: #484848;
+        }
+
+        /*------------------------------------GAMES-------------------------------------*/
+
+        .container-games{
+            width: 100%;
+            padding: 5%;
+        }
+
+        .container-games .game{
+            width: 20vw;
+            height: 20vw;
+            border: 1px solid red;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 5vw;
+            cursor: pointer;
+        }
+
+         .game-disable{
+            cursor: not-allowed!important;
+         }
+
+        .container-games .disable{
+            cursor: not-allowed;
+        }
+
+        /*------------------------------------DEVELOPERS-------------------------------------*/
+
+        .container-developers{
+            width: 100%;
+            height: 280px;
+            /*display: flex;*/
+            background-color: #2980b9;
+        }
+
+        .container-developers .user{
+            width: 300px;
+            height: 300px;
+            border-radius: 100%;
+            border: 30px solid #1d80bb;
+            margin-top: -80px;
+            background-color: white;
+        }
+
+        .container-developers .user:first-child { 
+            float: left;
+            margin-left: 12.5%;
+            background-image: url(img/201601875.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .container-developers .user:last-child { 
+            float: right;
+            margin-right: 12.5%;
+            background-image: url(img/201608440.jpg);
+            background-color: #6fceff;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+
+        /*------------------------------------FOOTER-------------------------------------*/
+
+
+        footer{
+            width: 100%;
+            height: 300px;
+            background-color: #181d23;
+        }
+
+        /*------------------------------------splash-screen-------------------------------------*/
+
+        .splash-screen{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #181d23f6;
+            z-index: 100;
+            background-image: url('img/Gear-4.1s-200px.gif');
+
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /*------------------------------------popUp-------------------------------------*/
+
+        .popup-login{
+            width: 100%;
+            height: 100vh;
+            background-color: #000000d6;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            text-align: center;
+            /*display: none;*/
+            opacity: 0;
+        }
+
+        .close-popup{
+                color: white;
+                font-size: 62px;
+                position: absolute;
+                right: 0;
+                margin: 30px;
+                margin-top: 0px;
+                background: none;
+                border: none;
+                text-align: center;
+                width: 50px;
+                height: 50px;
+                /*background-color: red;*/
+                line-height: 35px;
+        }
+
+        .popup-login input[type="email"], input[type="password"]{
+            width: 80%;
+            font-size: 22px;
+            border: none;
+            padding: 7px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .popup-login input[type="email"]{
+            margin-top: 15%;
+        }
+
+        .popup-login input[type="submit"] {
+            border: none;
+            font-size: 1.8em;
+            margin-top: 15px;
+            width: 100px;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <!-- CONTAINER-NAV -->
+
+    <nav>
+        <ul>
+            <li id="nav_home">
+                <a>HOME</a> 
+                <div class="nav-line"></div>
+            </li>
+            <li id="nav_game">
+                <a>GAMES</a>
+                <div class="nav-line"></div>
+            </li>
+            <li>
+                <a href="">BLOG</a>
+                <div class="nav-line"></div>
+            </li>   
+            <li>
+                <a href="">VIDEOS</a>
+                <div class="nav-line"></div>
+            </li>
+            <li>
+                <a href="">FORUMS</a>
+                <div class="nav-line"></div>
+            </li>
+            <li>
+                <a href="">CONTACTS</a>
+                <div class="nav-line"></div>
+            </li>
+        </ul>
+
+        <ul class="login">
+            <li>
+                <a id="nav_login">LOGIN</a> 
+                <div class="nav-line"></div>
+            </li>
+            <li>
+                <a href="">REGISTER</a>
+                <div class="nav-line"></div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CONTAINER-SLIDE-HEADER -->
+
+    <div id='slide_header'>
+        <div class='slide-container'>
+            <div class='slide slide1' style="background-color: #fdfdfd">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
+                <button class="slide-button">PLAY NOW</button>
+            </div>
+
+            <div class='slide slide1' style="background-color: #fdfdfd">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
+                <button class="slide-button">PLAY NOW</button>
+            </div>
+
+            <div class='slide slide1' style="background-color: #fdfdfd">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</p>
+                <button class="slide-button">PLAY NOW</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONTAINER-REGISTER-EMAIL -->
+
+    <form class="register-email">
+        <span>Fique sempre Informado!!</span>
+        <div class="register-email-container">
+            <input type="email" name="register_email_email" placeholder="E-MAIL =)">
+            <input type="submit" name="" value="OK!!">
+        </div>
+    </form>
+
+    <!-- CONTAINER-GAMES -->
+    <div class="container-games">
+        <div id="game1" class="game"></div>
+        <div class="game game-disable"></div>
+        <div class="game game-disable"></div>
+    </div>
+    <div class="container-developers">
+        <div class="user user1"></div>
+        <div class="user user2"></div>
+    </div>
+    <footer>
+        
+    </footer>
+
+
+    <div class="splash-screen"></div>
+
+    <div class="popup-login">
+        <span class="close-popup">x</span>
+        <form method="POST">
+            <input type="email" name="login_email" placeholder="EMAIL">
+            <br>
+            <input type="password" name="login_password" placeholder="PASSWORD">
+            <br>
+            <input class="popup-login-submit" type="submit" name="" value="LOGIN">
+        </form>
+        <div class="popup-background"></div>
+    </div>
+
+    <script>
+        var checkNavPosition = false;
+        var button_play_now_color = '#bdc3c7';
+
+        function constAnimation(turn){
+            let time = 1000;
+            if(turn){
+                // $luc('.slide-button').animation({'boxShadow': 'rgb(255, 255, 255) 0px 0px 5px 0px, rgb(255, 0, 255) 0px 0px 20px 6px, rgb(0, 255, 255) 0px 0px 20px 15px'},1000);
+
+                // $luc('.slide-button').animation({'boxShadow': 'inset #2ecc71 0px 0px 5px 1px, #2ecc71 0px 0px 20px 1px'},1000);
+                $luc('.slide-button').animation({'boxShadow': button_play_now_color+' 0px 0px 5px 1px', 'backgroundColor': '', 'color':button_play_now_color},time);
+            }
+            else{
+                // $luc('.slide-button').animation({'boxShadow': 'inset #e74c3c 0px 0px 16px 1px, #3498db 0px 0px 16px 1px'},1000);
+                $luc('.slide-button').animation({'boxShadow': button_play_now_color+' 0px 0px 50px 1px', 'backgroundColor': '', 'color':button_play_now_color},time);
+                // $luc('.slide-button').animation({'boxShadow': '#e74c3c 0px 0px 20px 1px', 'backgroundColor': '', 'color':''},1000);
+                // $luc('.slide-button').animation({'boxShadow': ''},1000);
+            }
+
+            setTimeout(constAnimation, time, !turn);
+        }
+        constAnimation(true);
+
+        $luc('#slide_header').createComponent().slide();
+        $luc('nav ul li').mouseOver(function(){
+            $luc(this).children('.nav-line').animation({'opacity': '1', 'width':'100%', 'marginLeft': '0'}, 300);
+        }).mouseLeave(function(){
+            $luc(this).children('.nav-line').animation({'opacity': '0', 'width':'0', 'marginLeft': '50%'}, 300);
+        });
+
+        $luc('.slide-button').mouseOver(function(){button_play_now_color  = '#e74c3c'; $luc('.slide-button').style('color', '#e74c3c');}).mouseLeave(function(){button_play_now_color = '#bdc3c7'; $luc('.slide-button').style('color', '#bdc3c7');});
+
+
+        $luc('#nav_home').click(function(){
+            $luc('#slide_header').animationScroll();
+        });
+
+        $luc('#nav_game').click(function(){
+            $luc('.container-games').animationScroll();
+        });
+
+        window.addEventListener('scroll', function() {
+            if(parseInt(pageYOffset)>parseInt($luc('form').offsetTop())){
+                if(!checkNavPosition){
+                    $luc('nav').style({'position': 'fixed','backgroundColor': '#2c3e50', 'top': '-100px'});
+                    $luc('nav').children('ul').children('li').children('a').style('color', '#ecf0f1');
+                    $luc('.nav-line').style('backgroundColor', '#ecf0f1');
+                    setTimeout(function(){                    
+                        $luc('nav').animation({'top':'0'}, 1000);
+                    },0);
+                    checkNavPosition=true;
+                }
+            }
+            else{
+                if(checkNavPosition){
+                    $luc('nav').style({'position': '','backgroundColor': '', 'color': ''});
+                    $luc('nav').children('ul').children('li').children('a').style('color', '');
+                    $luc('nav').animation({'top':'0'}, 1000);
+                    $luc('.nav-line').style('backgroundColor', '');
+
+                    checkNavPosition=false;
+                }
+            }
+        });
+
+        window.onload = function () {
+            $luc('.splash-screen').animation({'opacity':'0'}, 500);
+            setTimeout(function(){$luc('.splash-screen').hide();},500);
+         }
+
+         $luc('.close-popup').click(function(){
+            $luc(this).parent().animation({'opacity':'0'}, 500);
+            setTimeout(function(e){e.hide();}, 500, $luc(this).parent());
+         });
+
+         $luc('#nav_login').click(function(){
+            $luc('.popup-login').show();
+            $luc('.popup-login').animation({'opacity':'1'}, 500);
+         });
+
+         $luc('.close-popup').mouseOver(function(){$luc(this).animation({'transform':'rotate(180deg)', 'transformOrigin': '50% 50%'}, 1000)}).mouseLeave(function(){$luc(this).animation({'transform':'', 'transformOrigin': ''}, 1000)});
+
+         $luc('.popup-login').hide();
+
+         $luc('.popup-login-submit').mouseOver(function(){$luc(this).animation({'color':'#c0392b'}, 500)}).mouseLeave(function(){$luc(this).animation({'color': ''}, 500)});
+
+         $luc('.slide-button').click(function(){
+            $luc('.container-games').animationScroll();
+         });
+    </script>
+</body>
+</html>
